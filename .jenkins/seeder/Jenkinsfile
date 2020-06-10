@@ -1,0 +1,15 @@
+pipeline {
+    agent any
+    stages {
+        stage('Create') { 
+            steps {
+                jobDsl targets: 'jenkins/build_app_dsl',
+                    ignoreExisting: true,
+                    additionalParameters: [
+                        NEW_JOB_NAME: "$NEW_JOB_NAME"
+                    ]
+                sh "echo \"Param NEW_JOB_NAME: $NEW_JOB_NAME\" "
+            }
+        }
+    }
+}

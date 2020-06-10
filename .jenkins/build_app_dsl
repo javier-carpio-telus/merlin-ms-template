@@ -1,0 +1,12 @@
+def gitUrl = 'git://github.com/test/test'
+
+//job(${params.NEW_JOB_NAME}) {
+
+pipelineJob(NEW_JOB_NAME) {
+    definition {
+        cps {
+            script(readFileFromWorkspace('jenkins/build_app.groovy'))
+            sandbox()
+        }
+    }
+}
